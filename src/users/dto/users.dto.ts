@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, IsEmail, IsOptional } from 'class-validator'
 import { IsUnique } from 'src/validators'
-import { User } from './user.entity'
+import { User } from '../user.entity'
 
 /*
  * User register DTO.
