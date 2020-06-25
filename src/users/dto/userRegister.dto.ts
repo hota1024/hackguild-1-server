@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString, IsEmail, IsOptional } from 'class-validator'
-import { IsUnique } from 'src/validators'
+import { IsUnique } from '../../validators'
 import { User } from '../user.entity'
 
 /*
