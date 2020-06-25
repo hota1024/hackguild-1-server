@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Inject } from '@nestjs/common'
+import { Controller, Post, Body } from '@nestjs/common'
 import { UserRegisterDto } from './dto/users.dto'
 import { UsersService } from './users.service'
 import { User } from './user.entity'
