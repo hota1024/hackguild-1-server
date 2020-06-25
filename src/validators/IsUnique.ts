@@ -1,4 +1,8 @@
-import { ValidationOptions, registerDecorator } from 'class-validator'
+import {
+  ValidationOptions,
+  registerDecorator,
+  ValidationArguments,
+} from 'class-validator'
 import { getRepository } from 'typeorm'
 
 /**
@@ -28,6 +32,9 @@ export const IsUnique = <T>(
           })
 
           return count < 1
+        },
+        defaultMessage(validationArguments?: ValidationArguments) {
+          return `${validationArguments.property} is already used`
         },
       },
     })
