@@ -31,4 +31,22 @@ export class UsersService {
 
     return user
   }
+
+  /**
+   * Find a user by name or email.
+   *
+   * @param nameOrEmail Name or Email.
+   */
+  findOneByNameOrEmail(nameOrEmail: string): Promise<User> {
+    return this.usersRepository.findOne({
+      where: [
+        {
+          name: nameOrEmail,
+        },
+        {
+          email: nameOrEmail,
+        },
+      ],
+    })
+  }
 }
