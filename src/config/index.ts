@@ -7,6 +7,11 @@ dotenv.config()
  */
 export type EnvConfig = {
   /**
+   * Application mode.
+   */
+  APP_MODE: 'development' | 'production'
+
+  /**
    * Application server port.
    */
   APP_PORT: number
