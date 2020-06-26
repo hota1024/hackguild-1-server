@@ -40,6 +40,11 @@ export type EnvConfig = {
    * JWT secret key.
    */
   JWT_SECRET: string
+
+  /**
+   * JWT expires in.
+   */
+  JWT_EXPIRES_IN: string
 }
 
 /**
