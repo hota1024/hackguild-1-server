@@ -54,11 +54,10 @@ export type EnvConfig = {
  */
 export const getConfig = <K extends keyof EnvConfig>(key: K): EnvConfig[K] => {
   const value = process.env[key]
-  const numberValue = parseInt(value)
 
-  if (Number.isNaN(numberValue)) {
-    return value as EnvConfig[K]
+  if (value.match(/^\d+$/)) {
+    return parseInt(value) as EnvConfig[K]
   }
 
-  return numberValue as EnvConfig[K]
+  return value as EnvConfig[K]
 }
