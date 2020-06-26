@@ -1,7 +1,8 @@
-import { Controller, UseGuards, Post, Request } from '@nestjs/common'
+import { Controller, UseGuards, Post, Request, Get } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { AuthService } from './auth.service'
 import { RequestWithUser } from 'src/types'
+import { User } from 'src/users/user.entity'
 
 @Controller('auth')
 export class AuthController {
@@ -21,6 +22,8 @@ export class AuthController {
 
   /**
    * Login.
+   *
+   * @param request Request.
    */
   @UseGuards(AuthGuard('local'))
   @Post('/login')
@@ -34,5 +37,16 @@ export class AuthController {
     return {
       accessToken,
     }
+  }
+
+  /**
+   * Me.
+   *
+   * @param request Request.
+   */
+  @UseGuards(AuthGuard('jwt'))
+  @Get('/me')
+  me(@Request() request: RequestWithUser): User {
+    return request.user
   }
 }
