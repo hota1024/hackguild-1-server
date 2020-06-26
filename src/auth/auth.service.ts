@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common'
 import { UsersService } from 'src/users/users.service'
 import * as bcrypt from 'bcrypt'
-import ms from 'ms'
 import { User } from 'src/users/user.entity'
 import { JwtService } from '@nestjs/jwt'
 import { omit } from 'src/helpers'
-import { getConfig } from 'src/config'
 
 @Injectable()
 export class AuthService {
@@ -59,7 +57,6 @@ export class AuthService {
   async login(user: User): Promise<string> {
     const payload = {
       user: omit(user, ['password']),
-      expiresIn: ms(getConfig('JWT_EXPIRES_IN')),
     }
 
     return this.jwtService.sign(payload)
