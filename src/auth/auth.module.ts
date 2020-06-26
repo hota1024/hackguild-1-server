@@ -15,7 +15,7 @@ import { getConfig } from 'src/config'
     JwtModule.register({
       secret: getConfig('JWT_SECRET'),
       signOptions: {
-        expiresIn: '1w',
+        expiresIn: getConfig('JWT_EXPIRES_IN'),
       },
     }),
   ],
